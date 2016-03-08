@@ -1,1 +1,1 @@
-# jirengu-demo（作业展示）
+# jirengu-demo
