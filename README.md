@@ -1,4 +1,4 @@
 # jirengu-demo
 
 
-个人github地址：https://github.com/zhangyoung99/
+demo：http://book.jirengu.com/zhangyoung99/jirengu-demo/
