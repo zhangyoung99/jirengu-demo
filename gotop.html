@@ -46,7 +46,8 @@
 
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 <script>
-	GoTop = {
+
+/*	GoTop = {
 		init: function(){
 			if ($('#go-top').length > 0) {
 				return ;
@@ -74,7 +75,33 @@
 			});
 		}
 
-	}
+	}*/
+
+// 用立即执行表达式实现封装,使用了闭包
+	GoTop = (function(){
+		var $goTop = $('<div id="go-top">回到顶部</div>');
+		$('body').append($goTop);
+
+		function init(){
+			$(window).on('scroll',function(e){
+				var offsetTop = $('body').scrollTop();
+				console.log(offsetTop);
+				if (offsetTop > 50) {
+					$goTop.show();
+				} else {
+					$goTop.hide();
+				}
+			});
+
+			$goTop.on('click',function(){
+				$(window).scrollTop(0);
+			});
+
+		} 
+
+		return init();
+
+	})();
 
 	GoTop.init();
 
