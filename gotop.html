@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>gotop</title>
+</head>
+
+	<style type="text/css">
+		div{
+			width: 100%;
+			line-height: 50px;
+			border: 1px solid #eee;
+			margin-bottom: 50px;
+		}
+
+		#go-top{
+			position: fixed;
+			bottom: 20px;
+			right: 0;
+			width: 100px;
+			line-height: 30px;
+			border: 1px solid #666;
+			color: red;
+			background: #eee;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+<body>
+
+	<div>内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+	<div>内容4</div>
+	<div>内容5</div>
+	<div>内容6</div>
+	<div>内容7</div>
+	<div>内容8</div>
+	<div>内容9</div>
+	<div>内容10</div> 
+	<div>内容11</div>
+	<div>内容12</div>
+	<div>内容13</div>
+	<div>内容14</div>
+	<div>内容15</div>         
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+
+/*	GoTop = {
+		init: function(){
+			if ($('#go-top').length > 0) {
+				return ;
+			}
+			var $goTop = $('<div id="go-top">回到顶部</div>');
+			$('body').append($goTop);
+
+			this.$goTop = $goTop;
+			this.bind();
+		},
+		bind: function(){
+			var self = this;
+			$(window).on('scroll',function(){
+				var offset = $('body').scrollTop();
+
+				if (offset > 0) {
+					self.$goTop.show();
+				}else{
+					self.$goTop.hide();
+				}
+			});
+
+			this.$goTop.on('click',function(){
+				$(window).scrollTop(0);
+			});
+		}
+
+	}*/
+
+// 用立即执行表达式实现封装,使用了闭包
+	GoTop = (function(){
+		var $goTop = $('<div id="go-top">回到顶部</div>');
+		$('body').append($goTop);
+
+		function init(){
+			$(window).on('scroll',function(e){
+				var offsetTop = $('body').scrollTop();
+				console.log(offsetTop);
+				if (offsetTop > 50) {
+					$goTop.show();
+				} else {
+					$goTop.hide();
+				}
+			});
+
+			$goTop.on('click',function(){
+				$(window).scrollTop(0);
+			});
+
+		} 
+
+		return init();
+
+	})();
+
+	GoTop.init();
+
+
+</script>
+
+</body>
+</html>
